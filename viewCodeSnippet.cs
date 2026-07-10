@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DevelopersDiaryApplication
 {
-    public partial class addProjectFrm : Form
+    public partial class viewCodeSnippet : Form
     {
-        public addProjectFrm()
+        public viewCodeSnippet()
         {
             InitializeComponent();
         }
