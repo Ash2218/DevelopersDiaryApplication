@@ -15,6 +15,7 @@ namespace DevelopersDiaryApplication
     {
         //global variables
         int projectID = -1;
+        int selectedErrorID = -1;
         public viewProject(int projectID)
         {
             InitializeComponent();
@@ -115,6 +116,40 @@ namespace DevelopersDiaryApplication
             displayErrorsQuery();
             displayCodeSnippetsQuery();
 
+        }
+
+        private void dgvErrors_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex < 0) return;
+
+                // Guard: filtered view may have fewer rows than clientTable
+                DataView dv = (dgvErrors.DataSource as DataTable).DefaultView;
+                if (e.RowIndex >= dv.Count) return;
+
+                DataGridViewRow row = dgvErrors.Rows[e.RowIndex];
+
+                selectedErrorID = Convert.ToInt32(dv[e.RowIndex]["errorID"]);
+                MessageBox.Show("Selected Error ID: " + selectedErrorID);
+
+                //Form1 parent = (Form1)this.MdiParent;
+
+                //if (parent != null)
+                //{
+                //    parent.FormSetup(new viewError(selectedErrorID));
+                //}
+                viewError viewErrorForm = new viewError(selectedErrorID);
+                viewErrorForm.ShowDialog();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error reading selected client:\n" + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }
