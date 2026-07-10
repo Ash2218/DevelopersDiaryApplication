@@ -47,11 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="addProjectFrm.cs">
+    <Compile Include="addProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="addProjectFrm.Designer.cs">
-      <DependentUpon>addProjectFrm.cs</DependentUpon>
+    <Compile Include="addProjectForm.Designer.cs">
+      <DependentUpon>addProjectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dashboardFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dashboardFrm.Designer.cs">
+      <DependentUpon>dashboardFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConnection.cs" />
     <Compile Include="developerDiaryDS.Designer.cs">
@@ -74,8 +80,29 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Session.cs" />
-    <EmbeddedResource Include="addProjectFrm.resx">
-      <DependentUpon>addProjectFrm.cs</DependentUpon>
+    <Compile Include="viewCodeSnippet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="viewCodeSnippet.Designer.cs">
+      <DependentUpon>viewCodeSnippet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="viewError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="viewError.Designer.cs">
+      <DependentUpon>viewError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="viewProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="viewProject.Designer.cs">
+      <DependentUpon>viewProject.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="addProjectForm.resx">
+      <DependentUpon>addProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dashboardFrm.resx">
+      <DependentUpon>dashboardFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -91,7 +118,14 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="viewError.resx">
+      <DependentUpon>viewError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="viewProject.resx">
+      <DependentUpon>viewProject.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="developerDiaryDS.xsc">
       <DependentUpon>developerDiaryDS.xsd</DependentUpon>
     </None>
@@ -115,6 +149,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Images\saveButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Images\asterisk.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

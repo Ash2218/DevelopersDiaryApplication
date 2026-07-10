@@ -20,6 +20,16 @@ namespace DevelopersDiaryApplication
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void LoginFrm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLogin_Click_1(object sender, EventArgs e)
+        {
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text;
 
@@ -57,7 +67,10 @@ namespace DevelopersDiaryApplication
                                 MessageBox.Show("Login successful!", "Login",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                // Open main form and close login
+                                MessageBox.Show("Welcome back "+ Session.UserName + "!"
+                                    , "Login",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                                 this.Hide();
                                 Form1 main = new Form1();
                                 main.FormClosed += (s, args) => this.Close();
@@ -79,15 +92,6 @@ namespace DevelopersDiaryApplication
                 MessageBox.Show("Database error: " + ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void LoginFrm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnLogin_Click_1(object sender, EventArgs e)
-        {
 
         }
     }
