@@ -132,5 +132,15 @@ namespace DevelopersDiaryApplication
             }
           
         }
+
+        private void lblProjectDescription_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblProjectName_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

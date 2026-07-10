@@ -37,20 +37,20 @@
             this.lblAddProject = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.programmingLanguageBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.developerDiaryDS1 = new DevelopersDiaryApplication.developerDiaryDS();
+            this.rtbProjectDescription = new System.Windows.Forms.RichTextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.rtbProjectDescription = new System.Windows.Forms.RichTextBox();
+            this.programmingLanguageBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.developerDiaryDS1 = new DevelopersDiaryApplication.developerDiaryDS();
             this.programmingLanguageTableAdapter = new DevelopersDiaryApplication.developerDiaryDSTableAdapters.ProgrammingLanguageTableAdapter();
             this.projectTableAdapter1 = new DevelopersDiaryApplication.developerDiaryDSTableAdapters.ProjectTableAdapter();
             this.projectLanguagesTableAdapter1 = new DevelopersDiaryApplication.developerDiaryDSTableAdapters.ProjectLanguagesTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.programmingLanguageBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.developerDiaryDS1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programmingLanguageBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.developerDiaryDS1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbProjectName
@@ -76,6 +76,7 @@
             this.lblProjectName.Size = new System.Drawing.Size(185, 38);
             this.lblProjectName.TabIndex = 3;
             this.lblProjectName.Text = "Project Name";
+            this.lblProjectName.Click += new System.EventHandler(this.lblProjectName_Click);
             // 
             // lblProjectDescription
             // 
@@ -85,6 +86,7 @@
             this.lblProjectDescription.Size = new System.Drawing.Size(252, 38);
             this.lblProjectDescription.TabIndex = 4;
             this.lblProjectDescription.Text = "Project Description";
+            this.lblProjectDescription.Click += new System.EventHandler(this.lblProjectDescription_Click);
             // 
             // lblDateCreated
             // 
@@ -124,15 +126,13 @@
             this.checkedListBox1.Size = new System.Drawing.Size(397, 232);
             this.checkedListBox1.TabIndex = 8;
             // 
-            // programmingLanguageBindingSource
+            // rtbProjectDescription
             // 
-            this.programmingLanguageBindingSource.DataMember = "ProgrammingLanguage";
-            this.programmingLanguageBindingSource.DataSource = this.developerDiaryDS1;
-            // 
-            // developerDiaryDS1
-            // 
-            this.developerDiaryDS1.DataSetName = "developerDiaryDS";
-            this.developerDiaryDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.rtbProjectDescription.Location = new System.Drawing.Point(770, 302);
+            this.rtbProjectDescription.Name = "rtbProjectDescription";
+            this.rtbProjectDescription.Size = new System.Drawing.Size(718, 180);
+            this.rtbProjectDescription.TabIndex = 12;
+            this.rtbProjectDescription.Text = "";
             // 
             // pictureBox3
             // 
@@ -166,13 +166,15 @@
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
-            // rtbProjectDescription
+            // programmingLanguageBindingSource
             // 
-            this.rtbProjectDescription.Location = new System.Drawing.Point(770, 302);
-            this.rtbProjectDescription.Name = "rtbProjectDescription";
-            this.rtbProjectDescription.Size = new System.Drawing.Size(718, 180);
-            this.rtbProjectDescription.TabIndex = 12;
-            this.rtbProjectDescription.Text = "";
+            this.programmingLanguageBindingSource.DataMember = "ProgrammingLanguage";
+            this.programmingLanguageBindingSource.DataSource = this.developerDiaryDS1;
+            // 
+            // developerDiaryDS1
+            // 
+            this.developerDiaryDS1.DataSetName = "developerDiaryDS";
+            this.developerDiaryDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // programmingLanguageTableAdapter
             // 
@@ -209,11 +211,11 @@
             this.Name = "addProjectForm";
             this.Text = "addProjectForm";
             this.Load += new System.EventHandler(this.addProjectForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.programmingLanguageBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.developerDiaryDS1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programmingLanguageBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.developerDiaryDS1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -93,6 +93,7 @@
             this.dgvErrors.RowTemplate.Height = 24;
             this.dgvErrors.Size = new System.Drawing.Size(1580, 150);
             this.dgvErrors.TabIndex = 0;
+            this.dgvErrors.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvErrors_CellClick);
             // 
             // dgvCodeSnippets
             // 
