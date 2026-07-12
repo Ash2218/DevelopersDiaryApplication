@@ -16,6 +16,7 @@ namespace DevelopersDiaryApplication
         //global variables
         int projectID = -1;
         int selectedErrorID = -1;
+        int selectedSnippetID = -1;
         public viewProject(int projectID)
         {
             InitializeComponent();
@@ -150,6 +151,51 @@ namespace DevelopersDiaryApplication
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
+        }
+
+        private void btnAddError_Click(object sender, EventArgs e)
+        {
+
+            Form1 parent = (Form1)this.MdiParent;
+
+            if (parent != null)
+            {
+                parent.FormSetup(new addError(projectID));
+            }
+
+        }
+
+        private void dgvCodeSnippets_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           try
+            {
+                if (e.RowIndex < 0) return;
+
+                // Guard: filtered view may have fewer rows than clientTable
+                DataView dv = (dgvCodeSnippets.DataSource as DataTable).DefaultView;
+                if (e.RowIndex >= dv.Count) return;
+
+                DataGridViewRow row = dgvCodeSnippets.Rows[e.RowIndex];
+
+                selectedSnippetID = Convert.ToInt32(dv[e.RowIndex]["snippetID"]);
+                MessageBox.Show("Selected snippet ID: " + selectedSnippetID);
+
+                //Form1 parent = (Form1)this.MdiParent;
+
+                //if (parent != null)
+                //{
+                //    parent.FormSetup(new viewError(selectedErrorID));
+                //}
+                viewCodeSnippet viewCode = new viewCodeSnippet(selectedSnippetID);
+                viewCode.ShowDialog();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error reading selected code snippet:\n" + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

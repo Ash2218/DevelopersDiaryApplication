@@ -31,14 +31,14 @@
             this.lblProjectNameTimes = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.gbErrors = new System.Windows.Forms.GroupBox();
-            this.gbCodeSnippets = new System.Windows.Forms.GroupBox();
-            this.dgvErrors = new System.Windows.Forms.DataGridView();
-            this.dgvCodeSnippets = new System.Windows.Forms.DataGridView();
             this.btnAddError = new System.Windows.Forms.Button();
+            this.dgvErrors = new System.Windows.Forms.DataGridView();
+            this.gbCodeSnippets = new System.Windows.Forms.GroupBox();
             this.btnAddCodeSnippet = new System.Windows.Forms.Button();
+            this.dgvCodeSnippets = new System.Windows.Forms.DataGridView();
             this.gbErrors.SuspendLayout();
-            this.gbCodeSnippets.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvErrors)).BeginInit();
+            this.gbCodeSnippets.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCodeSnippets)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,17 +72,16 @@
             this.gbErrors.TabStop = false;
             this.gbErrors.Text = "Errors";
             // 
-            // gbCodeSnippets
+            // btnAddError
             // 
-            this.gbCodeSnippets.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.gbCodeSnippets.Controls.Add(this.btnAddCodeSnippet);
-            this.gbCodeSnippets.Controls.Add(this.dgvCodeSnippets);
-            this.gbCodeSnippets.Location = new System.Drawing.Point(18, 531);
-            this.gbCodeSnippets.Name = "gbCodeSnippets";
-            this.gbCodeSnippets.Size = new System.Drawing.Size(1635, 291);
-            this.gbCodeSnippets.TabIndex = 3;
-            this.gbCodeSnippets.TabStop = false;
-            this.gbCodeSnippets.Text = "Code snippets";
+            this.btnAddError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddError.Location = new System.Drawing.Point(51, 213);
+            this.btnAddError.Name = "btnAddError";
+            this.btnAddError.Size = new System.Drawing.Size(199, 37);
+            this.btnAddError.TabIndex = 1;
+            this.btnAddError.Text = "Record new error";
+            this.btnAddError.UseVisualStyleBackColor = true;
+            this.btnAddError.Click += new System.EventHandler(this.btnAddError_Click);
             // 
             // dgvErrors
             // 
@@ -95,25 +94,17 @@
             this.dgvErrors.TabIndex = 0;
             this.dgvErrors.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvErrors_CellClick);
             // 
-            // dgvCodeSnippets
+            // gbCodeSnippets
             // 
-            this.dgvCodeSnippets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCodeSnippets.Location = new System.Drawing.Point(34, 37);
-            this.dgvCodeSnippets.Name = "dgvCodeSnippets";
-            this.dgvCodeSnippets.RowHeadersWidth = 51;
-            this.dgvCodeSnippets.RowTemplate.Height = 24;
-            this.dgvCodeSnippets.Size = new System.Drawing.Size(1580, 150);
-            this.dgvCodeSnippets.TabIndex = 0;
-            // 
-            // btnAddError
-            // 
-            this.btnAddError.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddError.Location = new System.Drawing.Point(51, 213);
-            this.btnAddError.Name = "btnAddError";
-            this.btnAddError.Size = new System.Drawing.Size(199, 37);
-            this.btnAddError.TabIndex = 1;
-            this.btnAddError.Text = "Record new error";
-            this.btnAddError.UseVisualStyleBackColor = true;
+            this.gbCodeSnippets.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.gbCodeSnippets.Controls.Add(this.btnAddCodeSnippet);
+            this.gbCodeSnippets.Controls.Add(this.dgvCodeSnippets);
+            this.gbCodeSnippets.Location = new System.Drawing.Point(18, 531);
+            this.gbCodeSnippets.Name = "gbCodeSnippets";
+            this.gbCodeSnippets.Size = new System.Drawing.Size(1635, 291);
+            this.gbCodeSnippets.TabIndex = 3;
+            this.gbCodeSnippets.TabStop = false;
+            this.gbCodeSnippets.Text = "Code snippets";
             // 
             // btnAddCodeSnippet
             // 
@@ -124,6 +115,17 @@
             this.btnAddCodeSnippet.TabIndex = 1;
             this.btnAddCodeSnippet.Text = "Add new code snippet";
             this.btnAddCodeSnippet.UseVisualStyleBackColor = true;
+            // 
+            // dgvCodeSnippets
+            // 
+            this.dgvCodeSnippets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCodeSnippets.Location = new System.Drawing.Point(34, 37);
+            this.dgvCodeSnippets.Name = "dgvCodeSnippets";
+            this.dgvCodeSnippets.RowHeadersWidth = 51;
+            this.dgvCodeSnippets.RowTemplate.Height = 24;
+            this.dgvCodeSnippets.Size = new System.Drawing.Size(1580, 150);
+            this.dgvCodeSnippets.TabIndex = 0;
+            this.dgvCodeSnippets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCodeSnippets_CellClick);
             // 
             // viewProject
             // 
@@ -138,8 +140,8 @@
             this.Text = "viewProject";
             this.Load += new System.EventHandler(this.viewProject_Load);
             this.gbErrors.ResumeLayout(false);
-            this.gbCodeSnippets.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvErrors)).EndInit();
+            this.gbCodeSnippets.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCodeSnippets)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
