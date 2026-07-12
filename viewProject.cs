@@ -197,5 +197,10 @@ namespace DevelopersDiaryApplication
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnAddCodeSnippet_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

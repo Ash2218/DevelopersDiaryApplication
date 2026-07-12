@@ -115,6 +115,7 @@
             this.btnAddCodeSnippet.TabIndex = 1;
             this.btnAddCodeSnippet.Text = "Add new code snippet";
             this.btnAddCodeSnippet.UseVisualStyleBackColor = true;
+            this.btnAddCodeSnippet.Click += new System.EventHandler(this.btnAddCodeSnippet_Click);
             // 
             // dgvCodeSnippets
             // 
