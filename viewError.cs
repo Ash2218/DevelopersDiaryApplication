@@ -26,6 +26,15 @@ namespace DevelopersDiaryApplication
         {
          cbAI.Checked = true;
          cbPersonal.Checked = true;
+         setEnabled(false);
+            //Fill the combo box with all languages
+            this.programmingLanguageTableAdapter1.Fill(developerDiaryDS1.ProgrammingLanguage);
+
+            cmbLanguage.DataSource = developerDiaryDS1.ProgrammingLanguage;
+            cmbLanguage.DisplayMember = "languageName";
+            cmbLanguage.ValueMember = "languageID";
+
+            
 
             this.errorJoinExplanationJoinSolutionTableAdapter1.Fill(developerDiaryDS1.ErrorJoinExplanationJoinSolution,errorID);
             if (developerDiaryDS1.ErrorJoinExplanationJoinSolution.Rows.Count == 0)
@@ -34,40 +43,25 @@ namespace DevelopersDiaryApplication
                 this.Close();
                 return;
             }
-            
-
-            if (developerDiaryDS1.ErrorJoinExplanationJoinSolution.Rows[0]["explanation"]!=null) {
-                int rowIndex = 0;
-                while (rowIndex < developerDiaryDS1.ErrorJoinExplanationJoinSolution.Rows.Count)
-                { //check if explanation exists
-                    if (developerDiaryDS1.ErrorJoinExplanationJoinSolution.Rows[rowIndex]["explanation"].ToString() == "")
-                    {
-                        rtbExplanationAI.Text = "No explanation available";
-                        rtbExplanationPersonal.Text = "No explanation available";
-                    }
-                    else if (developerDiaryDS1.ErrorJoinExplanationJoinSolution.Rows[rowIndex]["type"].ToString() == "AI")
-                    {
-                        rtbExplanationAI.Text = developerDiaryDS1.ErrorJoinExplanationJoinSolution.Rows[rowIndex]["explanation"].ToString();
-                    }
-                    else if (developerDiaryDS1.ErrorJoinExplanationJoinSolution.Rows[rowIndex]["type"].ToString() == "Personal")
-                    {
-                        rtbExplanationPersonal.Text = developerDiaryDS1.ErrorJoinExplanationJoinSolution.Rows[rowIndex]["explanation"].ToString();
-
-                    }
 
 
-                    rowIndex++;
-                }//while
+            rtbExplanationAI.Text = "No explanation available";
+            rtbExplanationPersonal.Text = "No explanation available";
 
-            }
-            else
+            foreach (DataRow r in developerDiaryDS1.ErrorJoinExplanationJoinSolution.Rows)
             {
-                rtbExplanationPersonal.Text = "No explanation yet";
-                rtbExplanationAI.Text = "No explanation yet";
+                if (r.IsNull("explanation"))
+                    continue;
+
+                if (r["type"].ToString() == "AI")
+                    rtbExplanationAI.Text = r["explanation"].ToString();
+
+                if (r["type"].ToString() == "Personal")
+                    rtbExplanationPersonal.Text = r["explanation"].ToString();
             }
 
             DataRow row = developerDiaryDS1.ErrorJoinExplanationJoinSolution.Rows[0];
-
+            cmbLanguage.Text = row["languageName"].ToString();
             SetText(tbErrorTitle, row, "errorTitle");
             SetText(rtbErrorMessage, row, "errorMessage");
             SetText(rtbErrorContext, row, "context", "No context available");
@@ -95,13 +89,13 @@ namespace DevelopersDiaryApplication
                 rtbExplanationAI.Visible = false;
             }
 
-            if (!cbPersonal.Checked)
+            if (cbPersonal.Checked==false)
             {
-                rtbExplanationAI.Width = 1500;
+                rtbExplanationAI.Size = new Size(1200, 233);
             }
             else
             {
-                rtbExplanationAI.Width = 700;
+                rtbExplanationAI.Size = new Size(856, 233);
             }
         }
 
@@ -110,12 +104,12 @@ namespace DevelopersDiaryApplication
             if (cbPersonal.Checked)
             {
                 rtbExplanationPersonal.Visible = true;
-                rtbExplanationAI.Width = 700;
+                rtbExplanationAI.Size = new Size(856, 233);
             }
             else
             {
                 rtbExplanationPersonal.Visible = false;
-                rtbExplanationAI.Width = 1500;
+                rtbExplanationAI.Size = new Size(1200, 233);
             }
         }
 
@@ -126,6 +120,34 @@ namespace DevelopersDiaryApplication
                 control.Text = defaultText;
             else
                 control.Text = row[columnName].ToString();
+        }
+
+
+        private void setEnabled(bool State)
+        {
+            tbErrorTitle.Enabled = State;
+            rtbErrorMessage.Enabled = State;
+            rtbErrorContext.Enabled = State;
+            rtbSolution.Enabled = State;
+            rtbExplanationAI.Enabled = State;
+            rtbExplanationPersonal.Enabled = State;
+            rtbNotes.Enabled = State;
+            cmbLanguage.Enabled = State;
+
+        }
+
+        
+
+        private void cbEnableEditing_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbEnableEditing.Checked)
+            {
+                setEnabled(true);
+            }
+            else
+            {
+                setEnabled(false);
+            }
         }
     }
 }

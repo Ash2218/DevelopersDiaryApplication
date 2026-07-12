@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -47,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addError.Designer.cs">
+      <DependentUpon>addError.cs</DependentUpon>
+    </Compile>
     <Compile Include="addProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +107,9 @@
     <Compile Include="viewProject.Designer.cs">
       <DependentUpon>viewProject.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="addError.resx">
+      <DependentUpon>addError.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="addProjectForm.resx">
       <DependentUpon>addProjectForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,6 +132,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="viewCodeSnippet.resx">
+      <DependentUpon>viewCodeSnippet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="viewError.resx">
       <DependentUpon>viewError.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +152,7 @@
     <None Include="developerDiaryDS.xss">
       <DependentUpon>developerDiaryDS.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -155,6 +171,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Images\asterisk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2026-07-12 153604.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

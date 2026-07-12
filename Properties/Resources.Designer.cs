@@ -73,6 +73,16 @@ namespace DevelopersDiaryApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap download__2_ {
+            get {
+                object obj = ResourceManager.GetObject("download (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap folderIconBgRemoved {
             get {
                 object obj = ResourceManager.GetObject("folderIconBgRemoved", resourceCulture);
@@ -86,6 +96,16 @@ namespace DevelopersDiaryApplication.Properties {
         internal static System.Drawing.Bitmap saveButton {
             get {
                 object obj = ResourceManager.GetObject("saveButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Screenshot_2026_07_12_153604 {
+            get {
+                object obj = ResourceManager.GetObject("Screenshot 2026-07-12 153604", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
