@@ -1,3 +1,4 @@
+🚧 This project is actively under development, and new features and improvements are being added regularly.
 # Developers Diary
 
 Developers Diary is a Windows desktop application that helps developers build a personal programming knowledge base by recording errors, solutions, 
