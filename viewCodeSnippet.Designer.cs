@@ -74,15 +74,15 @@
             this.pnlCode.AutoScroll = true;
             this.pnlCode.BackColor = System.Drawing.Color.Transparent;
             this.pnlCode.Controls.Add(this.lblCode);
-            this.pnlCode.Location = new System.Drawing.Point(66, 307);
+            this.pnlCode.Location = new System.Drawing.Point(66, 308);
             this.pnlCode.Name = "pnlCode";
-            this.pnlCode.Size = new System.Drawing.Size(857, 494);
+            this.pnlCode.Size = new System.Drawing.Size(823, 349);
             this.pnlCode.TabIndex = 3;
             // 
             // lblCode
             // 
             this.lblCode.AutoSize = true;
-            this.lblCode.Location = new System.Drawing.Point(18, 28);
+            this.lblCode.Location = new System.Drawing.Point(3, 0);
             this.lblCode.Name = "lblCode";
             this.lblCode.Size = new System.Drawing.Size(65, 28);
             this.lblCode.TabIndex = 0;
@@ -93,15 +93,15 @@
             this.pnlExplanation.AutoScroll = true;
             this.pnlExplanation.BackColor = System.Drawing.Color.Transparent;
             this.pnlExplanation.Controls.Add(this.lblexplanation);
-            this.pnlExplanation.Location = new System.Drawing.Point(1015, 307);
+            this.pnlExplanation.Location = new System.Drawing.Point(1017, 308);
             this.pnlExplanation.Name = "pnlExplanation";
-            this.pnlExplanation.Size = new System.Drawing.Size(857, 504);
+            this.pnlExplanation.Size = new System.Drawing.Size(805, 349);
             this.pnlExplanation.TabIndex = 4;
             // 
             // lblexplanation
             // 
             this.lblexplanation.AutoSize = true;
-            this.lblexplanation.Location = new System.Drawing.Point(42, 28);
+            this.lblexplanation.Location = new System.Drawing.Point(3, 0);
             this.lblexplanation.Name = "lblexplanation";
             this.lblexplanation.Size = new System.Drawing.Size(65, 28);
             this.lblexplanation.TabIndex = 0;
@@ -125,7 +125,7 @@
             this.lblCodeTitle.Font = new System.Drawing.Font("Segoe UI", 19.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodeTitle.Location = new System.Drawing.Point(819, 133);
             this.lblCodeTitle.Name = "lblCodeTitle";
-            this.lblCodeTitle.Size = new System.Drawing.Size(117, 46);
+            this.lblCodeTitle.Size = new System.Drawing.Size(113, 45);
             this.lblCodeTitle.TabIndex = 6;
             this.lblCodeTitle.Text = "label2";
             // 

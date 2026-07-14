@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCodeSnippet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCodeSnippet.Designer.cs">
+      <DependentUpon>AddCodeSnippet.cs</DependentUpon>
+    </Compile>
     <Compile Include="addError.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     <Compile Include="viewProject.Designer.cs">
       <DependentUpon>viewProject.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddCodeSnippet.resx">
+      <DependentUpon>AddCodeSnippet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="addError.resx">
       <DependentUpon>addError.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,6 +189,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue BG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnGeneral.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnLine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnGenerate.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
