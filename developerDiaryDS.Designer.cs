@@ -6921,12 +6921,26 @@ SELECT snippetID, projectID, languageID, categoryID, notes, explanation, code, t
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT snippetID, projectID, languageID, categoryID, notes, explanation, code, ti" +
                 "tle, dateRecorded, isArchived\r\nFROM     CodeSnippet";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"INSERT INTO [CodeSnippet] ([projectID], [languageID], [categoryID], [notes], [explanation], [code], [title], [dateRecorded], [isArchived]) VALUES (@projectID, @languageID, @categoryID, @notes, @explanation, @code, @title, @dateRecorded, @isArchived);
+SELECT snippetID, projectID, languageID, categoryID, notes, explanation, code, title, dateRecorded, isArchived FROM CodeSnippet WHERE (snippetID = SCOPE_IDENTITY())";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@projectID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "projectID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@languageID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "languageID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@categoryID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "categoryID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@notes", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "notes", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@explanation", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "explanation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@code", global::System.Data.SqlDbType.VarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "code", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@title", global::System.Data.SqlDbType.VarChar, 255, global::System.Data.ParameterDirection.Input, 0, 0, "title", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dateRecorded", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "dateRecorded", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@isArchived", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "isArchived", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7191,6 +7205,68 @@ SELECT snippetID, projectID, languageID, categoryID, notes, explanation, code, t
                     System.DateTime Original_dateRecorded, 
                     bool Original_isArchived) {
             return this.Update(projectID, languageID, categoryID, notes, explanation, code, title, dateRecorded, isArchived, Original_snippetID, Original_projectID, Original_languageID, Original_categoryID, Original_title, Original_dateRecorded, Original_isArchived, Original_snippetID);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertQuery_CodeSnippet(global::System.Nullable<int> projectID, int languageID, int categoryID, string notes, string explanation, string code, string title, string dateRecorded, bool isArchived) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            if ((projectID.HasValue == true)) {
+                command.Parameters[0].Value = ((int)(projectID.Value));
+            }
+            else {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            command.Parameters[1].Value = ((int)(languageID));
+            command.Parameters[2].Value = ((int)(categoryID));
+            if ((notes == null)) {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[3].Value = ((string)(notes));
+            }
+            if ((explanation == null)) {
+                throw new global::System.ArgumentNullException("explanation");
+            }
+            else {
+                command.Parameters[4].Value = ((string)(explanation));
+            }
+            if ((code == null)) {
+                throw new global::System.ArgumentNullException("code");
+            }
+            else {
+                command.Parameters[5].Value = ((string)(code));
+            }
+            if ((title == null)) {
+                throw new global::System.ArgumentNullException("title");
+            }
+            else {
+                command.Parameters[6].Value = ((string)(title));
+            }
+            if ((dateRecorded == null)) {
+                throw new global::System.ArgumentNullException("dateRecorded");
+            }
+            else {
+                command.Parameters[7].Value = ((string)(dateRecorded));
+            }
+            command.Parameters[8].Value = ((bool)(isArchived));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
@@ -10047,7 +10123,7 @@ SELECT projectID, projectName, description, dateCreated, userID, LastAccessed, i
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = @"INSERT INTO Project
                   (projectName, description, dateCreated, userID, LastAccessed)
-VALUES (@projectName,@description,@dateCreated,@userID,@LastAccessed); 
+VALUES (@projectName,@description,@dateCreated,@userID,@LastAccessed);  
 SELECT projectID, projectName, description, dateCreated, userID, LastAccessed FROM Project WHERE (projectID = SCOPE_IDENTITY())";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@projectName", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "projectName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -116,6 +117,29 @@ namespace DevelopersDiaryApplication
         {
             displayErrorsQuery();
             displayCodeSnippetsQuery();
+            pnlFilters.Visible = false;
+            cbErrorTitle.Checked = true;
+            cbErrorMessage.Checked = true;
+
+
+
+            this.programmingLanguageTableAdapter1.Fill(developerDiaryDS1.ProgrammingLanguage);
+            cmbLanguage.DataSource = developerDiaryDS1.ProgrammingLanguage;
+            cmbLanguage.DisplayMember = "languageName";
+            cmbLanguage.ValueMember = "languageID";
+            cmbLanguage.SelectedIndex = -1;
+
+            this.categoryTableAdapter1.Fill(developerDiaryDS1.Category);
+            cmbCategory.DataSource = developerDiaryDS1.Category;
+            cmbCategory.DisplayMember = "categoryName";
+            cmbCategory.ValueMember = "categoryID";
+            cmbCategory.SelectedIndex = -1;
+
+            this.errorTypeTableAdapter1.Fill(developerDiaryDS1.ErrorType);
+            cmbErrorType.DataSource = developerDiaryDS1.ErrorType;
+            cmbErrorType.DisplayMember = "errorTypeName";
+            cmbErrorType.ValueMember = "errorTypeID";
+            cmbErrorType.SelectedIndex = -1;
 
         }
 
@@ -156,13 +180,20 @@ namespace DevelopersDiaryApplication
         private void btnAddError_Click(object sender, EventArgs e)
         {
 
-            Form1 parent = (Form1)this.MdiParent;
+            /*Form1 parent = (Form1)this.MdiParent;
 
             if (parent != null)
             {
                 parent.FormSetup(new addError(projectID));
-            }
+            }*/
+            addError frm = new addError(projectID);
+            frm.FormClosed += (s, args) =>
+            {
+                RefreshData();
+            };
 
+            frm.ShowDialog();
+            
         }
 
         private void dgvCodeSnippets_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -200,7 +231,191 @@ namespace DevelopersDiaryApplication
 
         private void btnAddCodeSnippet_Click(object sender, EventArgs e)
         {
+            /*Form1 parent = (Form1)this.MdiParent;
 
+            if (parent != null)
+            {
+                parent.FormSetup(new AddCodeSnippet(projectID));
+            }*/
+            AddCodeSnippet frm = new AddCodeSnippet(projectID);
+
+            frm.FormClosed += (s, args) =>
+            {
+                RefreshData();
+            };
+
+            frm.ShowDialog();
+           
+           
+        }
+
+        private void btnShowFilters_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbShowFilters_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbShowFilters.Checked)
+            {
+                pnlFilters.Visible = true;
+            }
+            else
+            {
+                pnlFilters.Visible = false;
+            }
+        }
+
+        private void chkSearchCode_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
+        
+
+        private void txtSearchTerm_TextChanged(object sender, EventArgs e)
+        {
+
+            searchErrorsQuery(txtSearchTerm.Text.Trim());
+            searchCodeSnippet(txtSearchTerm.Text.Trim());
+
+        }
+        public void searchErrorsQuery(string searchTerm)
+        {
+            using (SqlConnection conn = new SqlConnection(DBConnection.ConnectionString))
+            {
+                string sql = @"
+        SELECT errorTitle,errorMessage,context,languageName,errorTypeName
+        FROM Error
+        INNER JOIN ProgrammingLanguage
+            ON Error.languageID = ProgrammingLanguage.languageID
+        INNER JOIN ErrorType
+            ON Error.errorTypeID = ErrorType.errorTypeID
+        WHERE Error.projectID = @ID
+        AND Error.isArchived = 0";
+
+                List<string> conditions = new List<string>();
+                if (cbErrorMessage.Checked)
+                {
+                    conditions.Add("errorMessage LIKE @searchText");
+                }
+                if (cbErrorTitle.Checked)
+                {
+                    conditions.Add("errorTitle LIKE @searchText");
+                }
+                if (cbContext.Checked)
+                {
+                    conditions.Add("context LIKE @searchText");
+                }
+                if (conditions.Count > 0)
+                {
+                    sql += " AND (";
+                    sql += string.Join(" OR ", conditions);
+                    sql += ")";
+                }
+                if (cmbLanguage.SelectedIndex != -1)
+                {
+                    sql += " AND Error.languageID=@LanguageID";
+                   
+                }
+                if (cmbErrorType.SelectedIndex != -1)
+                {
+                    sql += " AND Error.errorTypeID=@ErrorTypeID";
+                }
+                SqlCommand cmd = new SqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("@ID", projectID);
+                cmd.Parameters.AddWithValue("@searchText", "%" + searchTerm + "%");
+
+                if (cmbLanguage.SelectedIndex != -1)
+                cmd.Parameters.AddWithValue("@LanguageID",cmbLanguage.SelectedValue);
+
+                if (cmbErrorType.SelectedIndex != -1)
+                    cmd.Parameters.AddWithValue("@ErrorTypeID", cmbErrorType.SelectedValue);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+
+                dgvErrors.DataSource = dt;
+                //MessageBox.Show(sql.ToString());
+            }
+        }
+
+        private void btnApplyFilters_Click(object sender, EventArgs e)
+        {
+            searchErrorsQuery(txtSearchTerm.Text.Trim());
+            searchCodeSnippet(txtSearchTerm.Text.Trim());
+        }
+
+        public void searchCodeSnippet(string searchTerm)
+        {
+            using (SqlConnection conn = new SqlConnection(DBConnection.ConnectionString))
+            {
+                string sql = @"
+       SELECT title, code, explanation, notes, languageName, categoryName
+FROM CodeSnippet
+INNER JOIN ProgrammingLanguage
+    ON CodeSnippet.languageID = ProgrammingLanguage.languageID
+INNER JOIN Category
+    ON CodeSnippet.categoryID = Category.categoryID
+WHERE CodeSnippet.projectID = @ID
+AND CodeSnippet.isArchived = 0";
+
+                List<string> conditions = new List<string>();
+                if (cbCode.Checked)
+                {
+                    conditions.Add("code LIKE @searchText");
+                }
+                if (cbErrorTitle.Checked)
+                {
+                    conditions.Add("title LIKE @searchText");
+                }
+                
+                if (conditions.Count > 0)
+                {
+                    sql += " AND (";
+                    sql += string.Join(" OR ", conditions);
+                    sql += ")";
+                }
+                if (cmbLanguage.SelectedIndex != -1)
+                {
+                    sql += " AND CodeSnippet.languageID=@LanguageID";
+
+                }
+                if (cmbCategory.SelectedIndex != -1)
+                {
+                    sql += " AND CodeSnippet.categoryID=@CategoryID";
+                }
+                SqlCommand cmd = new SqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("@ID", projectID);
+                cmd.Parameters.AddWithValue("@searchText", "%" + searchTerm + "%");
+
+                if (cmbLanguage.SelectedIndex != -1)
+                    cmd.Parameters.AddWithValue("@LanguageID", cmbLanguage.SelectedValue);
+
+                if (cmbCategory.SelectedIndex != -1)
+                    cmd.Parameters.AddWithValue("@CategoryID", cmbCategory.SelectedValue);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+
+                dgvCodeSnippets.DataSource = dt;
+               // MessageBox.Show(sql.ToString());
+            }
+        }
+
+        private void RefreshData()
+        {
+            displayErrorsQuery();
+            displayCodeSnippetsQuery();
         }
     }
 }

@@ -30,7 +30,11 @@ namespace DevelopersDiaryApplication
             checkedListBox1.DataSource = developerDiaryDS1.ProgrammingLanguage;
             checkedListBox1.DisplayMember = "languageName";
             checkedListBox1.ValueMember = "languageID";
-            tbDateCreated.Text = DateTime.Now.ToString("dd-MM-yyyy");
+            try { tbDateCreated.Text = DateTime.Now.ToString("yyyy-MM-dd"); }
+            catch
+            {
+                MessageBox.Show("Error setting date created field.");
+            }
 
            /* try
             {
@@ -83,7 +87,9 @@ namespace DevelopersDiaryApplication
             }
             try
             {
-               if (rtbProjectDescription.Text != null)
+               
+                DateTime lastAccessed = DateTime.Now;
+                if (rtbProjectDescription.Text != null)
                 {
                     projectID = Convert.ToInt32(
                         projectTableAdapter1.InsertQuery_Project(
@@ -91,7 +97,7 @@ namespace DevelopersDiaryApplication
                         rtbProjectDescription.Text.Trim(),
                         tbDateCreated.Text,
                         Session.UserID,
-                        DateTime.Now));
+                        lastAccessed));
                 }
                else
                 {
@@ -101,7 +107,7 @@ namespace DevelopersDiaryApplication
                         "No description.",
                         tbDateCreated.Text,
                         Session.UserID,
-                        DateTime.Now));
+                        lastAccessed));
                 }
 
 
