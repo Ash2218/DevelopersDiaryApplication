@@ -42,6 +42,11 @@
             this.cbShowNotes = new System.Windows.Forms.CheckBox();
             this.codeSnippetJoinTableAdapter1 = new DevelopersDiaryApplication.developerDiaryDSTableAdapters.CodeSnippetJoinTableAdapter();
             this.developerDiaryDS1 = new DevelopersDiaryApplication.developerDiaryDS();
+            this.rtbCode = new System.Windows.Forms.RichTextBox();
+            this.cbEnableEditing = new System.Windows.Forms.CheckBox();
+            this.rtbExplanation = new System.Windows.Forms.RichTextBox();
+            this.btnSaveChanges = new System.Windows.Forms.Button();
+            this.codeSnippetTableAdapter1 = new DevelopersDiaryApplication.developerDiaryDSTableAdapters.CodeSnippetTableAdapter();
             this.pnlCode.SuspendLayout();
             this.pnlExplanation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.developerDiaryDS1)).BeginInit();
@@ -180,6 +185,47 @@
             this.developerDiaryDS1.DataSetName = "developerDiaryDS";
             this.developerDiaryDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // rtbCode
+            // 
+            this.rtbCode.Location = new System.Drawing.Point(66, 691);
+            this.rtbCode.Name = "rtbCode";
+            this.rtbCode.Size = new System.Drawing.Size(823, 96);
+            this.rtbCode.TabIndex = 11;
+            this.rtbCode.Text = "";
+            // 
+            // cbEnableEditing
+            // 
+            this.cbEnableEditing.AutoSize = true;
+            this.cbEnableEditing.Location = new System.Drawing.Point(1426, 105);
+            this.cbEnableEditing.Name = "cbEnableEditing";
+            this.cbEnableEditing.Size = new System.Drawing.Size(159, 32);
+            this.cbEnableEditing.TabIndex = 12;
+            this.cbEnableEditing.Text = "Enable Editing";
+            this.cbEnableEditing.UseVisualStyleBackColor = true;
+            this.cbEnableEditing.CheckedChanged += new System.EventHandler(this.cbEnableEditing_CheckedChanged);
+            // 
+            // rtbExplanation
+            // 
+            this.rtbExplanation.Location = new System.Drawing.Point(1038, 691);
+            this.rtbExplanation.Name = "rtbExplanation";
+            this.rtbExplanation.Size = new System.Drawing.Size(823, 96);
+            this.rtbExplanation.TabIndex = 13;
+            this.rtbExplanation.Text = "";
+            // 
+            // btnSaveChanges
+            // 
+            this.btnSaveChanges.Location = new System.Drawing.Point(1175, 105);
+            this.btnSaveChanges.Name = "btnSaveChanges";
+            this.btnSaveChanges.Size = new System.Drawing.Size(173, 37);
+            this.btnSaveChanges.TabIndex = 14;
+            this.btnSaveChanges.Text = "Save Changes";
+            this.btnSaveChanges.UseVisualStyleBackColor = true;
+            this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
+            // 
+            // codeSnippetTableAdapter1
+            // 
+            this.codeSnippetTableAdapter1.ClearBeforeFill = true;
+            // 
             // viewCodeSnippet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -191,6 +237,10 @@
             this.BackgroundImage = global::DevelopersDiaryApplication.Properties.Resources.bg;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.Controls.Add(this.btnSaveChanges);
+            this.Controls.Add(this.rtbExplanation);
+            this.Controls.Add(this.cbEnableEditing);
+            this.Controls.Add(this.rtbCode);
             this.Controls.Add(this.cbShowNotes);
             this.Controls.Add(this.lblExplanationHeading);
             this.Controls.Add(this.lblCodeHeading);
@@ -232,5 +282,10 @@
         private developerDiaryDS developerDiaryDS1;
         private System.Windows.Forms.Label lblCode;
         private System.Windows.Forms.Label lblexplanation;
+        private System.Windows.Forms.RichTextBox rtbCode;
+        private System.Windows.Forms.CheckBox cbEnableEditing;
+        private System.Windows.Forms.RichTextBox rtbExplanation;
+        private System.Windows.Forms.Button btnSaveChanges;
+        private developerDiaryDSTableAdapters.CodeSnippetTableAdapter codeSnippetTableAdapter1;
     }
 }

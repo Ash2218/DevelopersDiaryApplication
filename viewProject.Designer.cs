@@ -47,13 +47,13 @@
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.cbContext = new System.Windows.Forms.CheckBox();
-            this.programmingLanguageTableAdapter1 = new DevelopersDiaryApplication.developerDiaryDSTableAdapters.ProgrammingLanguageTableAdapter();
-            this.developerDiaryDS1 = new DevelopersDiaryApplication.developerDiaryDS();
-            this.categoryTableAdapter1 = new DevelopersDiaryApplication.developerDiaryDSTableAdapters.CategoryTableAdapter();
             this.btnApplyFilters = new System.Windows.Forms.Button();
             this.lblLanguage = new System.Windows.Forms.Label();
             this.lblErrorType = new System.Windows.Forms.Label();
             this.lblCategory = new System.Windows.Forms.Label();
+            this.programmingLanguageTableAdapter1 = new DevelopersDiaryApplication.developerDiaryDSTableAdapters.ProgrammingLanguageTableAdapter();
+            this.developerDiaryDS1 = new DevelopersDiaryApplication.developerDiaryDS();
+            this.categoryTableAdapter1 = new DevelopersDiaryApplication.developerDiaryDSTableAdapters.CategoryTableAdapter();
             this.errorTypeTableAdapter1 = new DevelopersDiaryApplication.developerDiaryDSTableAdapters.ErrorTypeTableAdapter();
             this.gbErrors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvErrors)).BeginInit();
@@ -123,7 +123,7 @@
             this.gbCodeSnippets.Controls.Add(this.dgvCodeSnippets);
             this.gbCodeSnippets.Location = new System.Drawing.Point(18, 531);
             this.gbCodeSnippets.Name = "gbCodeSnippets";
-            this.gbCodeSnippets.Size = new System.Drawing.Size(1635, 291);
+            this.gbCodeSnippets.Size = new System.Drawing.Size(1635, 399);
             this.gbCodeSnippets.TabIndex = 3;
             this.gbCodeSnippets.TabStop = false;
             this.gbCodeSnippets.Text = "Code snippets";
@@ -131,7 +131,7 @@
             // btnAddCodeSnippet
             // 
             this.btnAddCodeSnippet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCodeSnippet.Location = new System.Drawing.Point(51, 212);
+            this.btnAddCodeSnippet.Location = new System.Drawing.Point(34, 333);
             this.btnAddCodeSnippet.Name = "btnAddCodeSnippet";
             this.btnAddCodeSnippet.Size = new System.Drawing.Size(187, 36);
             this.btnAddCodeSnippet.TabIndex = 1;
@@ -146,7 +146,7 @@
             this.dgvCodeSnippets.Name = "dgvCodeSnippets";
             this.dgvCodeSnippets.RowHeadersWidth = 51;
             this.dgvCodeSnippets.RowTemplate.Height = 24;
-            this.dgvCodeSnippets.Size = new System.Drawing.Size(1580, 150);
+            this.dgvCodeSnippets.Size = new System.Drawing.Size(1580, 277);
             this.dgvCodeSnippets.TabIndex = 0;
             this.dgvCodeSnippets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCodeSnippets_CellClick);
             // 
@@ -260,19 +260,6 @@
             this.cbContext.Text = "Context";
             this.cbContext.UseVisualStyleBackColor = true;
             // 
-            // programmingLanguageTableAdapter1
-            // 
-            this.programmingLanguageTableAdapter1.ClearBeforeFill = true;
-            // 
-            // developerDiaryDS1
-            // 
-            this.developerDiaryDS1.DataSetName = "developerDiaryDS";
-            this.developerDiaryDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // categoryTableAdapter1
-            // 
-            this.categoryTableAdapter1.ClearBeforeFill = true;
-            // 
             // btnApplyFilters
             // 
             this.btnApplyFilters.Location = new System.Drawing.Point(1155, 58);
@@ -309,6 +296,19 @@
             this.lblCategory.Size = new System.Drawing.Size(62, 16);
             this.lblCategory.TabIndex = 13;
             this.lblCategory.Text = "Category";
+            // 
+            // programmingLanguageTableAdapter1
+            // 
+            this.programmingLanguageTableAdapter1.ClearBeforeFill = true;
+            // 
+            // developerDiaryDS1
+            // 
+            this.developerDiaryDS1.DataSetName = "developerDiaryDS";
+            this.developerDiaryDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // categoryTableAdapter1
+            // 
+            this.categoryTableAdapter1.ClearBeforeFill = true;
             // 
             // errorTypeTableAdapter1
             // 
