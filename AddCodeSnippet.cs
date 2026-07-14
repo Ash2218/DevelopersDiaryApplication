@@ -88,7 +88,10 @@ namespace DevelopersDiaryApplication
                     - Explain what it does.
                     - Explain why it is used.
                     - Keep the explanation beginner friendly.
-                    - Group related lines together where appropriate.
+                    - Group related lines together where appropriate
+                     
+                    Output IF and only if it is applicable and you are 100% sure this is the output of the code, otherwise do not output anything.
+                   
                     ";
                 }
                 else
@@ -106,6 +109,7 @@ namespace DevelopersDiaryApplication
                     2. How it works overall.
                     3. Important concepts used.
                     4. Keep the explanation beginner friendly.
+                    5. Output IF and only if it is applicable and you are 100% sure this is the output of the code, otherwise do not output anything.
                     ";
                 }
                 var requestBody = new
@@ -198,7 +202,7 @@ namespace DevelopersDiaryApplication
                 "What the code does","Why it's used","What it does","Important concepts used","What it does",
                 "How it works overall",
                 "Important concepts",
-                "Line"
+                "Line","ouput","Output"
             };
 
             foreach (string heading in headings)

@@ -286,7 +286,7 @@ namespace DevelopersDiaryApplication
             using (SqlConnection conn = new SqlConnection(DBConnection.ConnectionString))
             {
                 string sql = @"
-        SELECT errorTitle,errorMessage,context,languageName,errorTypeName
+        SELECT errorID,errorTitle,errorMessage,context,languageName,errorTypeName
         FROM Error
         INNER JOIN ProgrammingLanguage
             ON Error.languageID = ProgrammingLanguage.languageID
@@ -356,7 +356,7 @@ namespace DevelopersDiaryApplication
             using (SqlConnection conn = new SqlConnection(DBConnection.ConnectionString))
             {
                 string sql = @"
-       SELECT title, code, explanation, notes, languageName, categoryName
+       SELECT snippetID,title, code, explanation, notes, languageName, categoryName
 FROM CodeSnippet
 INNER JOIN ProgrammingLanguage
     ON CodeSnippet.languageID = ProgrammingLanguage.languageID
